@@ -1,23 +1,22 @@
 {
   "files": {
-    "main.css": "/solarioapplications/static/css/main.1635e87c.chunk.css",
-    "main.js": "/solarioapplications/static/js/main.092b26eb.chunk.js",
-    "main.js.map": "/solarioapplications/static/js/main.092b26eb.chunk.js.map",
-    "runtime-main.js": "/solarioapplications/static/js/runtime-main.0bfd4002.js",
-    "runtime-main.js.map": "/solarioapplications/static/js/runtime-main.0bfd4002.js.map",
-    "static/js/2.ccc8de5c.chunk.js": "/solarioapplications/static/js/2.ccc8de5c.chunk.js",
-    "static/js/2.ccc8de5c.chunk.js.map": "/solarioapplications/static/js/2.ccc8de5c.chunk.js.map",
-    "static/js/3.fad14700.chunk.js": "/solarioapplications/static/js/3.fad14700.chunk.js",
-    "static/js/3.fad14700.chunk.js.map": "/solarioapplications/static/js/3.fad14700.chunk.js.map",
+    "main.css": "/solarioapplications/static/css/main.7d180cbf.chunk.css",
+    "main.js": "/solarioapplications/static/js/main.31c6c131.chunk.js",
+    "main.js.map": "/solarioapplications/static/js/main.31c6c131.chunk.js.map",
+    "runtime-main.js": "/solarioapplications/static/js/runtime-main.83d149c3.js",
+    "runtime-main.js.map": "/solarioapplications/static/js/runtime-main.83d149c3.js.map",
+    "static/js/2.0b365891.chunk.js": "/solarioapplications/static/js/2.0b365891.chunk.js",
+    "static/js/2.0b365891.chunk.js.map": "/solarioapplications/static/js/2.0b365891.chunk.js.map",
+    "static/js/3.5d2f98a1.chunk.js": "/solarioapplications/static/js/3.5d2f98a1.chunk.js",
+    "static/js/3.5d2f98a1.chunk.js.map": "/solarioapplications/static/js/3.5d2f98a1.chunk.js.map",
     "index.html": "/solarioapplications/index.html",
-    "static/css/main.1635e87c.chunk.css.map": "/solarioapplications/static/css/main.1635e87c.chunk.css.map",
-    "static/js/2.ccc8de5c.chunk.js.LICENSE.txt": "/solarioapplications/static/js/2.ccc8de5c.chunk.js.LICENSE.txt",
-    "static/media/logo.6ce24c58.svg": "/solarioapplications/static/media/logo.6ce24c58.svg"
+    "static/css/main.7d180cbf.chunk.css.map": "/solarioapplications/static/css/main.7d180cbf.chunk.css.map",
+    "static/js/2.0b365891.chunk.js.LICENSE.txt": "/solarioapplications/static/js/2.0b365891.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.0bfd4002.js",
-    "static/js/2.ccc8de5c.chunk.js",
-    "static/css/main.1635e87c.chunk.css",
-    "static/js/main.092b26eb.chunk.js"
+    "static/js/runtime-main.83d149c3.js",
+    "static/js/2.0b365891.chunk.js",
+    "static/css/main.7d180cbf.chunk.css",
+    "static/js/main.31c6c131.chunk.js"
   ]
 }
