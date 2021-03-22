@@ -1,10 +1,10 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Main from "./Main";
 
 function App() {
   return (
-    <div className="App">
-      <p>Solario apps esta en linea!</p>
+    <div>
+      <Main></Main>
     </div>
   );
 }
