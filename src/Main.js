@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState, useRef } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
@@ -14,62 +14,15 @@ const useStyles = makeStyles((theme) => ({
     width: "70%",
   },
   button: {
-    margin: "0px 0px 5px 0px",
+    margin: "0px 5px 0px 5px",
+    height: "50%",
   },
 }));
 
-
-const conceptosFacturaBuild = () => {
-  return (
-    <>
-      <Grid item xs={2}>
-        <TextField label="FUL" variant="outlined" />
-      </Grid>
-      <Grid item xs={1}>
-        <TextField label="Cantidad" variant="outlined" />
-      </Grid>
-      <Grid item xs={1}>
-        <TextField label="Concepto" variant="outlined" />
-      </Grid>
-      <Grid item xs={1}>
-        <TextField label="Unidad" variant="outlined" />
-      </Grid>
-      <Grid item xs={2}>
-        <TextField label="Precio Unitario" variant="outlined" />
-      </Grid>
-      <Grid item xs={2}>
-        <TextField label="Importe linea" variant="outlined" />
-      </Grid>
-      <Grid item xs={1}>
-        <TextField label="Tasa IVA" variant="outlined" />
-      </Grid>
-    </>
-  );
-};
-
-const conceptosNotaCredito = () => {
-  return (
-    <>
-      <Grid item xs={2}>
-        <TextField label="FUL" variant="outlined" />
-      </Grid>
-      <Grid item xs={2}>
-        <TextField label="Concepto" variant="outlined" />
-      </Grid>
-      <Grid item xs={2}>
-        <TextField label="Importe original" variant="outlined" />
-      </Grid>
-      <Grid item xs={2}>
-        <TextField label="Importe modificado" variant="outlined" />
-      </Grid>
-      <Grid item xs={2}>
-        <TextField label="Tasa IVA" variant="outlined" />
-      </Grid>
-    </>
-  );
-};
-
 export default function Main() {
+  const facturaIndex = useRef(1);
+  const notasIndex = useRef(1);
+
   const classes = useStyles();
   const [tipoDocumento, setTipoDocumento] = useState("");
   const [cuentaDelOrdenDelPM, setCuentaDelOrdenDelPM] = useState("");
@@ -82,7 +35,47 @@ export default function Main() {
   const [cuenta, setCuenta] = useState("");
   const [CLABE, setCLABE] = useState("");
   const [referencia, setReferencia] = useState("");
-  
+
+  const updateTipoDocumento = (e) => {
+    setTipoDocumento(e.target.value);
+  };
+
+  const updateCuentaDelOrdenDelPM = (e) => {
+    setCuentaDelOrdenDelPM(e.target.value);
+  };
+
+  const updateFUF = (e) => {
+    setFUF(e.target.value);
+  };
+
+  const updatePeriodoECD = (e) => {
+    setPeriodoECD(e.target.value);
+  };
+
+  const updateFechaLimDePago = (e) => {
+    setFechaLimDePago(e.target.value);
+  };
+
+  const updateContacto = (e) => {
+    setContacto(e.target.value);
+  };
+
+  const updateBanco = (e) => {
+    setBanco(e.target.value);
+  };
+  const updateSucursal = (e) => {
+    setSucursal(e.target.value);
+  };
+  const updateCuenta = (e) => {
+    setCuenta(e.target.value);
+  };
+  const updateCLABE = (e) => {
+    setCLABE(e.target.value);
+  };
+  const updateReferencia = (e) => {
+    setReferencia(e.target.value);
+  };
+
   //Conceptos factura
   const [FUL, setFUL] = useState([]);
   const [cantidad, setCantidad] = useState([]);
@@ -92,25 +85,226 @@ export default function Main() {
   const [importeLinea, setImporteLinea] = useState([]);
   const [tasaIVA, setTasaIVA] = useState([]);
 
+  const updateFUL = (e, index) => {
+    const newArr = FUL;
+    newArr[index] = e.target.value;
+    setFUL(newArr);
+  };
+  const updateCantidad = (e, index) => {
+    const newArr = cantidad;
+    newArr[index] = e.target.value;
+    setCantidad(newArr);
+  };
+  const updateConcepto = (e, index) => {
+    const newArr = concepto;
+    newArr[index] = e.target.value;
+    setConcepto(newArr);
+  };
+  const updateUnidad = (e, index) => {
+    const newArr = unidad;
+    newArr[index] = e.target.value;
+    setUnidad(newArr);
+  };
+  const updatePrecioUnitario = (e, index) => {
+    const newArr = precioUnitario;
+    newArr[index] = e.target.value;
+    setPrecioUnitario(newArr);
+  };
+  const updateImporteLinea = (e, index) => {
+    const newArr = importeLinea;
+    newArr[index] = e.target.value;
+    setImporteLinea(newArr);
+  };
+
+  const updateTasaIVA = (e, index) => {
+    const newArr = tasaIVA;
+    newArr[index] = e.target.value;
+    setTasaIVA(newArr);
+  };
+
   //Conceptos nota de crédito/cargo
   const [FULCredito, setFULCredito] = useState([]);
   const [conceptoCredito, setConceptoCredito] = useState([]);
   const [importeOriginal, setImporteOriginal] = useState([]);
   const [importeModificado, setImporteModificado] = useState([]);
   const [tasaIVACredito, setTasaIVACredito] = useState([]);
-  
 
+  const updateFULCredito = (e, index) => {
+    const newArr = FULCredito;
+    newArr[index] = e.target.value;
+    setFULCredito(newArr);
+  };
+
+  const updateConceptoCredito = (e, index) => {
+    const newArr = conceptoCredito;
+    newArr[index] = e.target.value;
+    setConceptoCredito(newArr);
+  };
+
+  const updateImporteOriginal = (e, index) => {
+    const newArr = importeOriginal;
+    newArr[index] = e.target.value;
+    setImporteOriginal(newArr);
+  };
+
+  const updateImporteModificado = (e, index) => {
+    const newArr = importeModificado;
+    newArr[index] = e.target.value;
+    setImporteModificado(newArr);
+  };
+
+  const updateTasaIVACredito = (e, index) => {
+    const newArr = tasaIVACredito;
+    newArr[index] = e.target.value;
+    setTasaIVACredito(newArr);
+  };
+
+  const conceptosFacturaBuild = (index) => {
+    return (
+      <>
+        <Grid id={`conceptos-factura-${index}`}>{index}</Grid>
+        <Grid item xs={2}>
+          <TextField
+            label="FUL"
+            variant="outlined"
+            value={FUL[index - 1]}
+            onChange={(e) => updateFUL(e, index)}
+          />
+        </Grid>
+        <Grid item xs={1}>
+          <TextField
+            label="Cantidad"
+            variant="outlined"
+            value={cantidad[index - 1]}
+            onChange={(e) => updateCantidad(e, index)}
+          />
+        </Grid>
+        <Grid item xs={1}>
+          <TextField
+            label="Concepto"
+            variant="outlined"
+            value={concepto[index - 1]}
+            onChange={(e) => updateConcepto(e, index)}
+          />
+        </Grid>
+        <Grid item xs={1}>
+          <TextField
+            label="Unidad"
+            variant="outlined"
+            value={unidad[index - 1]}
+            onChange={(e) => updateUnidad(e, index)}
+          />
+        </Grid>
+        <Grid item xs={2}>
+          <TextField
+            label="Precio Unitario"
+            variant="outlined"
+            value={precioUnitario[index - 1]}
+            onChange={(e) => updatePrecioUnitario(e, index)}
+          />
+        </Grid>
+        <Grid item xs={2}>
+          <TextField
+            label="Importe linea"
+            variant="outlined"
+            value={importeLinea[index - 1]}
+            onChange={(e) => updateImporteLinea(e, index)}
+          />
+        </Grid>
+        <Grid item xs={1}>
+          <TextField
+            label="Tasa IVA"
+            variant="outlined"
+            value={tasaIVA[index - 1]}
+            onChange={(e) => updateTasaIVA(e, index)}
+          />
+        </Grid>
+      </>
+    );
+  };
+
+  const conceptosNotaCredito = (index) => {
+    return (
+      <>
+        <Grid id={`conceptos-factura-${index}`}>{index}</Grid>
+        <Grid item xs={2}>
+          <TextField
+            label="FUL"
+            variant="outlined"
+            value={FULCredito[index - 1]}
+            onChange={(e) => updateFULCredito(e, index)}
+          />
+        </Grid>
+        <Grid item xs={2}>
+          <TextField
+            label="Concepto"
+            variant="outlined"
+            value={conceptoCredito[index - 1]}
+            onChange={(e) => updateConceptoCredito(e, index)}
+          />
+        </Grid>
+        <Grid item xs={2}>
+          <TextField
+            label="Importe original"
+            variant="outlined"
+            value={importeOriginal[index - 1]}
+            onChange={(e) => updateImporteOriginal(e, index)}
+          />
+        </Grid>
+        <Grid item xs={2}>
+          <TextField
+            label="Importe modificado"
+            variant="outlined"
+            value={importeModificado[index - 1]}
+            onChange={(e) => updateImporteModificado(e, index)}
+          />
+        </Grid>
+        <Grid item xs={2}>
+          <TextField
+            label="Tasa IVA"
+            variant="outlined"
+            value={tasaIVACredito[index - 1]}
+            onChange={(e) => updateTasaIVACredito(e, index)}
+          />
+        </Grid>
+      </>
+    );
+  };
+
+  const [refreshSite, setRefreshSite] = useState(0);
+  const [facturasArr, setFacturasArr] = useState([]);
+  const [notasArr, setNotasArr] = useState([]);
+
+  const addConceptoFactura = () => {
+    const newArr = facturasArr;
+    newArr.push(conceptosFacturaBuild(facturaIndex.current));
+    setFacturasArr(newArr);
+    facturaIndex.current += 1;
+    setRefreshSite(Math.random());
+  };
+
+  const addConceptoCredito = () => {
+    const newArr = notasArr;
+    newArr.push(conceptosNotaCredito(notasIndex.current));
+    setNotasArr(newArr);
+    notasIndex.current += 1;
+    setRefreshSite(Math.random());
+  };
+
+  // Upload logic 
 
   return (
     <Grid container className={classes.root} spacing={3}>
       <Grid item xs={12}>
-      <h1>Solario facturación</h1>
+        <h1>Solario facturación</h1>
       </Grid>
       <Grid item xs={3}>
         <TextField
+          className={classes.TextField}
           label="Tipo documento"
           variant="outlined"
-          className={classes.TextField}
+          value={tipoDocumento}
+          onChange={updateTipoDocumento}
         />
       </Grid>
       <Grid item xs={3}>
@@ -118,6 +312,8 @@ export default function Main() {
           label="Cuenta de orden del PM"
           variant="outlined"
           className={classes.TextField}
+          value={cuentaDelOrdenDelPM}
+          onChange={updateCuentaDelOrdenDelPM}
         />
       </Grid>
       <Grid item xs={6}>
@@ -125,6 +321,8 @@ export default function Main() {
           label="Folio único de facturación FUF"
           variant="outlined"
           className={classes.TextField}
+          value={FUF}
+          onChange={updateFUF}
         />
       </Grid>
       <Grid item xs={3}>
@@ -132,6 +330,8 @@ export default function Main() {
           label="Periodo ECD"
           variant="outlined"
           className={classes.TextField}
+          value={periodoECD}
+          onChange={updatePeriodoECD}
         />
       </Grid>
       <Grid item xs={3}>
@@ -139,6 +339,8 @@ export default function Main() {
           label="Fecha límite de pago"
           variant="outlined"
           className={classes.TextField}
+          value={fechaLimDePago}
+          onChange={updateFechaLimDePago}
         />
       </Grid>
       <Grid item xs={6}>
@@ -146,6 +348,8 @@ export default function Main() {
           label="Contacto"
           variant="outlined"
           className={classes.TextField}
+          value={contacto}
+          onChange={updateContacto}
         />
       </Grid>
       <Grid item xs={2}>
@@ -153,6 +357,8 @@ export default function Main() {
           label="Nombre del banco"
           variant="outlined"
           className={classes.TextField}
+          value={banco}
+          onChange={updateBanco}
         />
       </Grid>
       <Grid item xs={2}>
@@ -160,6 +366,8 @@ export default function Main() {
           label="Sucursal"
           variant="outlined"
           className={classes.TextField}
+          value={sucursal}
+          onChange={updateSucursal}
         />
       </Grid>
       <Grid item xs={2}>
@@ -167,6 +375,8 @@ export default function Main() {
           label="Cuenta"
           variant="outlined"
           className={classes.TextField}
+          value={cuenta}
+          onChange={updateCuenta}
         />
       </Grid>
       <Grid item xs={3}>
@@ -174,6 +384,8 @@ export default function Main() {
           label="CLABE"
           variant="outlined"
           className={classes.TextField}
+          value={CLABE}
+          onChange={updateCLABE}
         />
       </Grid>
       <Grid item xs={3}>
@@ -181,32 +393,60 @@ export default function Main() {
           label="Referencia"
           variant="outlined"
           className={classes.TextField}
+          value={referencia}
+          onChange={updateReferencia}
         />
       </Grid>
-      <Grid item xs={12}>
-        <h3>Conceptos factura</h3>
+      <Grid>
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <h3>Conceptos factura</h3>
+
+          <Button
+            variant="contained"
+            className={classes.button}
+            onClick={addConceptoFactura}
+          >
+            +
+          </Button>
+
+          <Button variant="contained" className={classes.button}>
+            -
+          </Button>
+        </div>
       </Grid>
-      <Grid item xs={1}>
-        <Button variant="contained" className={classes.button}>
-          +
-        </Button>
-        <Button variant="contained" className={classes.button}>
-          -
-        </Button>
+      {facturasArr.map((facturaArr, index) => {
+        return (
+          <div
+            key={`factura-${index}`}
+            style={{ display: "flex", margin: "5px" }}
+          >
+            {facturaArr}
+          </div>
+        );
+      })}
+      <Grid>
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <h3>Conceptos de nota credito/cargo</h3>
+
+          <Button
+            variant="contained"
+            className={classes.button}
+            onClick={addConceptoCredito}
+          >
+            +
+          </Button>
+          <Button variant="contained" className={classes.button}>
+            -
+          </Button>
+        </div>
       </Grid>
-      {conceptosFacturaBuild()}
-      <Grid item xs={12}>
-        <h3>Conceptos de nota credito/cargo</h3>
-      </Grid>
-      <Grid item xs={1}>
-        <Button variant="contained" className={classes.button}>
-          +
-        </Button>
-        <Button variant="contained" className={classes.button}>
-          -
-        </Button>
-      </Grid>
-      {conceptosNotaCredito()}
+      {notasArr.map((arr, index) => {
+        return (
+          <div key={`nota-${index}`} style={{ display: "flex", margin: "5px" }}>
+            {arr}
+          </div>
+        );
+      })}
     </Grid>
   );
 }
