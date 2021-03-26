@@ -3,6 +3,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+// var fileDownload = require('js-file-download');
+import fileDownload from 'js-file-download'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -291,12 +293,46 @@ export default function Main() {
     setRefreshSite(Math.random());
   };
 
-  // Upload logic 
+  // Upload logic
+
+  const onFileUpload = (e) => {
+    const buildFactura = window.confirm("Ya agregaste las líneas de factura que quieres anexar?");
+    if(buildFactura){
+      let file = e.target.files[0];
+      let reader = new FileReader();
+      reader.readAsText(file);
+      reader.onloadend = function () {
+        var xmlData = reader.result;
+        const splitIndex = xmlData.indexOf("</ad:Conceptos></ad:CAB>")
+        let xmlDataBase = xmlData.substr(0,splitIndex);
+        let xmlDataFin = xmlData.substr(splitIndex,);
+        //49 20 6b 6e 6f 77 20 74 68 69 73 20 69 73 20 75 67 6c 79 20 62 75 74 20 49 20 6a 75 73 74 20 77 61 6e 74 20 74 6f 20 66 69 6e 69 73 68
+        let newXmlData = xmlDataBase;
+        if(facturaIndex.current >= 2){
+          for (let i = 1; i < facturaIndex.current; i++){
+            let datosFactura = `<ad:LINEA LABEL="LINADD" NUM_LIN="${facturaIndex.current}" FOLIO_UNICO="${FUL[i]}" CONCEPTO="${concepto[i]}" CANTIDAD="${cantidad[i]}" UNIDAD="${unidad[i]}" PRECIO_UNIT="${precioUnitario[i]}" IMPORTE_LINEA="${importeLinea[i]}" IVA="${tasaIVA[i]}" TOTAL="${importeLinea[i] + tasaIVA[i]}"/>`
+            newXmlData += datosFactura;
+          }
+        }
+        newXmlData +=  xmlDataFin;
+        console.log(newXmlData);
+        let nombreArchivoADescargar = "factura.xml"
+        nombreArchivoADescargar = prompt("Nombre del archivo a descargar");
+        nombreArchivoADescargar += ".xml"
+        fileDownload(newXmlData, nombreArchivoADescargar);
+    }
+    } else{
+      alert("Agrega los datos que necesites.");
+    }
+  };
+
+  
 
   return (
     <Grid container className={classes.root} spacing={3}>
       <Grid item xs={12}>
         <h1>Solario facturación</h1>
+        <input type="file" name="xmlFile" onChange={onFileUpload} />
       </Grid>
       <Grid item xs={3}>
         <TextField
